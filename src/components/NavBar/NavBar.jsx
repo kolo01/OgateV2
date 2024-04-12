@@ -6,9 +6,9 @@ function NavBar() {
     return (
         <header className='w-full bg-white py-6 shadow-[0_0_12px_rgba(0,0,0,0.2)] roboto-thin'>
             <nav className='container mx-auto'>
-                <ul className='flex justify-between items-center'>
+                <ul className='flex justify-between items-center px-4 lg:px-0'>
                     <li>
-                        <Link to={"/"}><img className='w-10' src={ogateLogo} alt="" /></Link>
+                        <Link to={"/"}><img className='w-10 hidden lg:flex' src={ogateLogo} alt="" /></Link>
                     </li>
                     <li className='flex gap-10'>
                         <Link to={"/sign-up"} className='py-2 px-6 rounded-lg text-[#7a1317] border border-[#7a1317]'>S'inscrire</Link>

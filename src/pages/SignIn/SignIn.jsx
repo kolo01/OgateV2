@@ -1,4 +1,4 @@
-import { faG, faRightFromBracket, faUserPlus } from '@fortawesome/free-solid-svg-icons'
+import { faG, faRightFromBracket, faRightToBracket, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import { Link } from 'react-router-dom'
@@ -26,7 +26,7 @@ function SignIn() {
                                 <input type="text" className='border p-3 w-full rounded-md focus:outline-none focus:border-[#7a1317]' placeholder='Email'/>
                                 <input type="password" className='border p-3 w-full rounded-md focus:outline-none focus:border-[#7a1317]' placeholder='Mot de passe'/>
                                 <small className='text-sm'>Mot de passe oublié ?</small>
-                                <button className='bg-[#7a1317] text-white'><FontAwesomeIcon icon={faUserPlus} className='mr-2'/>Connexion</button>
+                                <button className='bg-[#7a1317] text-white'><FontAwesomeIcon icon={faRightToBracket} className='mr-2'/>Connexion</button>
                             </form>
                         </div>
                     </div>
