@@ -5,7 +5,7 @@ import React from 'react'
 function GlobalStatistics() {
     return (
         <section className='global-statistics'>
-            <div className="bg-white">
+            <div className="bg-white shadow-[0_0_12px_rgba(0,0,0,0.2)]">
                 <div className="flex flex-col gap-4">
                     <div className="rounded-t-md py-6 bg-[#7a1317]"></div>
                     <div className="flex flex-col items-center gap-2 -mt-10 z-10">

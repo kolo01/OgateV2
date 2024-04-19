@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import imgCle from '../../images/cle-porte.avif'
 import { Link } from 'react-router-dom'
@@ -8,13 +8,6 @@ import HomePage from './HomePage'
 
 function LoginHome() {
 
-    const onClicked = () => {
-        return (
-            <>
-                <HomePage/>
-            </>
-        )
-    }
 
 
     return (
@@ -36,7 +29,7 @@ function LoginHome() {
                             </Link>
                             <div className="flex items-center text-slate-700 roboto-thin">
                                 <span className=' text-slate-500'>_____________</span>
-                                <span className='text-lg'>Ou se connecter avec l'email</span>
+                                <span className='text-lg text-center lg:text-justify'>Ou se connecter avec l'email</span>
                                 <span className=' text-slate-500'>_____________</span>
                             </div>
                             <form className='w-full grid grid-rows-4 gap-6'>

@@ -7,7 +7,7 @@ function SignUp() {
     return (
         <section className="sign-up py-20 roboto-thin">
             <div className="container mx-auto">
-                <div className="w-3/6 mx-auto ">
+                <div className="w-full lg:w-3/6 mx-auto ">
                     <div className="flex flex-col p-10 rounded-md gap-10 bg-[#7a131638] shadow-[0_0_12px_rgba(0,0,0,0.1)] ">
                         <div className="text-4xl text-center text-[#7a1317] flex flex-col items-center gap-2">
                             <h1 className=''>Inscription</h1>
