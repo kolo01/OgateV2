@@ -1,22 +1,33 @@
 import React, { useState } from 'react'
 import ogateLogo from '../../images/logo.jpg.png'
 import { Link } from 'react-router-dom'
-import PostsPopUp from '../PostsPopUp/PostsPopUp'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faRestroom } from '@fortawesome/free-solid-svg-icons'
+
+import { createPortal } from "react-dom";
+
+import { Modal } from "../Modal/Modal";
+
 
 function NavBar() {
 
     const [nav, setNav] = useState(true)
-    const [isOpen, setIsOpen] = useState(false)
     const [next, setNext] = useState(false)
 
-    const OpenPopUp = () => {
-        setIsOpen(!isOpen)
-    }
+    const [display, setDisplay] = useState(true)
+
+
+    const [modalOpen, setModalOpen] = useState(false);
+    const [message, setMessage] = useState("");
     
-    const Next =  () => {
+    const handleButtonClick = (value) => {
+        console.log("value : ", value);
+        setModalOpen(false);
+        setMessage(value);
+    };
+
+    const handleNextButtonClick = () => {
+        setDisplay(false)
         setNext(true)
+
     }
 
     return (
@@ -30,62 +41,104 @@ function NavBar() {
                         <li className='flex gap-10'>
                             <Link to={"/"} className=''>Accueil</Link>
                             <Link to={"/notifs"} className=''>Notifications</Link>
-                            <button onClick={() => OpenPopUp()} className='border border-[#7a1713] px-2 text-[#7a1713]'>Postes</button>
-                            <PostsPopUp open={isOpen} onClose={() => setIsOpen(false)}>
-                                <div className="">
-                                    <h1 className='text-3xl font-bold text-gray-700'>Informations de base !</h1>
-                                </div>
-                                <div className='m-6'>
-                                    <ol class="flex items-center w-full text-sm font-medium text-center text-gray-500 dark:text-gray-400 sm:text-base">
-                                        <li class="flex md:w-full items-center text-[#7a1713] sm:after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-[#7a1713]">
-                                            <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
-                                                <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                                    <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5Zm3.707 8.207-4 4a1 1 0 0 1-1.414 0l-2-2a1 1 0 0 1 1.414-1.414L9 10.586l3.293-3.293a1 1 0 0 1 1.414 1.414Z" />
-                                                </svg>
-                                                Informations <span class="hidden sm:inline-flex sm:ms-2">Info</span>
+                            {/* {message} */}
+                            <button onClick={() => setModalOpen(true)} className='border border-[#7a1713] px-2 text-[#7a1713]'>Postes</button>
+                            {modalOpen &&
+                                createPortal(
+                                <Modal
+                                    closeModal={handleButtonClick}
+                                    onSubmit={handleNextButtonClick}
+                                    onCancel={handleButtonClick}
+                                >
+                                    <h1 className='text-3xl font-semibold text-gray-600 text-center'>Informations de base</h1>
+                                    
+                                    <ol class="flex items-center w-full p-3 justify-between text-xl font-medium text-center my-10 text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm sm:text-base  sm:p-4 sm:space-x-4 rtl:space-x-reverse">
+                                        <li class="flex items-center text-xl text-[#7a1713]">
+                                            <span class="flex items-center justify-center w-10 h-10 me-2 text-3xl border border-[#7a1713] rounded-full shrink-0">
+                                                1
                                             </span>
+                                            Informations {/*<span class="hidden sm:inline-flex sm:ms-2">Info</span>*/}
+                                            <svg class="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
+                                            </svg>
                                         </li>
-                                        <li class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
-                                            <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
-                                                <span class="me-2">2</span>
-                                                Sur le bien <span class="hidden sm:inline-flex sm:ms-2">Info</span>
+                                        <li class={`flex items-center text-xl  ${next ? " text-[#7a1713] ":"text-gray-500"}`}>
+                                            <span class={`flex items-center justify-center w-10 h-10 me-2 text-3xl border rounded-full shrink-0 ${next ? "border-[#7a1713] ":"border-gray-500"}`}>
+                                                2
                                             </span>
+                                            Informations sur le bien {/*<span class="hidden sm:inline-flex sm:ms-2">Info</span>*/}
+                                            <svg class="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
+                                            </svg>
                                         </li>
-                                        <li class="flex md:w-full items-center after:content-[''] after:w-full after:h-1 after:border-b after:border-gray-200 after:border-2 after:hidden sm:after:inline-block after:mx-6 xl:after:mx-10 dark:after:border-gray-700">
-                                            <span class="flex items-center after:content-['/'] sm:after:hidden after:mx-2 after:text-gray-200 dark:after:text-gray-500">
-                                                <span class="me-2">3</span>
-                                                Additionnelle <span class="hidden sm:inline-flex sm:ms-2">Info</span>
+                                        <li class="flex items-center text-xl">
+                                            <span class={`"flex items-center justify-center w-10 h-10 me-2 text-3xl border border-gray-500 rounded-full shrink-0"`}>
+                                                3
                                             </span>
+                                            Informations additionnelles
+                                            <svg class="w-3 h-3 ms-2 sm:ms-4 rtl:rotate-180" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+                                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
+                                            </svg>
                                         </li>
-                                        <li class="flex items-center">
-                                            <span class="me-2">4</span>
-                                            Généralités et Docs
+                                        <li class="flex items-center text-xl">
+                                            <span class={`"flex items-center justify-center w-10 h-10 me-2 text-3xl border border-gray-500 rounded-full shrink-0"`}>
+                                                4
+                                            </span>
+                                            Généralités et Documents
                                         </li>
                                     </ol>
-                                </div>
-                                {
-                                    next ? <div className="">
-                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Saepe, facilis.
-                                    </div> : null
-                                }
-                                
 
-                                <div className="flex justify-between">
+                                    {display && (
                                     <div className="">
                                         <label className='text-lg font-semibold' htmlFor="countries_multiple">Type de postes</label>
-                                        <select id="countries_multiple" className="focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-sm rounded-lg focus:ring-white block w-full p-2.5">
+                                        <select id="countries_multiple" className="focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full p-2">
                                             <option className='' value="Particulier">Informations</option>
                                             <option className='' value="Particulier">Particulier</option>
                                             <option className='' value="Entreprise">Entreprise</option>
                                         </select>
-                                    </div>
-                                    <div className="flex gap-8">
-                                        <button onClick={() => Next()} className='bg-blue-600 h-12 py-2 px-6 rounded-md text-white'>Suivant</button>
-                                        <button className='bg-red-600 h-12 py-2 px-6 rounded-md text-white'>Fermer</button>
-                                    </div>
-                                </div>
-                                
-                            </PostsPopUp>
+                                    </div> )}
+
+                                    {next && (
+                                        <div className="flex justify-around items-center">
+                                            <div className="flex flex-col gap-4 self-start">
+                                                <div className="w-full flex flex-col gap-1">
+                                                    <label className='text-lg font-semibold' htmlFor="countries_multiple">Type de postes</label>
+                                                    <select id="countries_multiple" className="focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full p-2">
+                                                        <option className='' value="Particulier">Informations</option>
+                                                        <option className='' value="Particulier">Particulier</option>
+                                                        <option className='' value="Entreprise">Entreprise</option>
+                                                    </select>
+                                                </div>
+                                                <div className="w-full flex flex-col gap-1">
+                                                    <label className='text-lg font-semibold' htmlFor="countries_multiple">Localisation</label>
+                                                    <input type="text" className='border focus:outline-none p-1 w-full placeholder:text-gray-500' placeholder='Localisation'/>
+                                                </div>
+                                                <div className="w-full flex flex-col gap-1">
+                                                    <label className='text-lg font-semibold' htmlFor="countries_multiple">Longitude</label>
+                                                    <input type="text" className='border focus:outline-none p-1 w-full placeholder:text-gray-500' placeholder='Longitude'/>
+                                                </div>
+                                            </div>
+                                            <div className="flex flex-col gap-4">
+                                                <div className="w-full flex flex-col gap-1">
+                                                    <label className='text-lg font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
+                                                    <input type="file" className='border focus:outline-none p-1 w-full placeholder:text-gray-500' placeholder=''/>
+                                                </div>
+                                                <div className="w-full flex flex-col gap-1">
+                                                    <label className='text-lg font-semibold' htmlFor="countries_multiple">Latitude</label>
+                                                    <input type="text" className='border focus:outline-none p-1 w-full placeholder:text-gray-500' placeholder='Latitude'/>
+                                                </div>
+                                                <div className="w-full flex flex-col gap-1">
+                                                    <label className='text-lg font-semibold' htmlFor="countries_multiple">Description</label>
+                                                    <textarea rows={6} className='border focus:outline-none resize-none w-full placeholder:text-gray-500 p-2'
+                                                       placeholder='Une belle demeure en bordure de plage'>
+                                                    </textarea>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </Modal>,
+                                document.body
+                            )}
                             <Link to={"/sign-up"} className=''>0000000</Link>
                         </li>
                     </ul>
@@ -103,8 +156,6 @@ function NavBar() {
                     </ul>
                 </nav>
             }
-
-            {/* {isOpen ? <h1 className='text-rose-300 text-4xl'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis, minus.</h1> : <p>Null</p>} */}
         </header>
     )
 }
