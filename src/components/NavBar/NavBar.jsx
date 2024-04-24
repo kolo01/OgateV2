@@ -50,9 +50,9 @@ function NavBar() {
                                     onSubmit={handleNextButtonClick}
                                     onCancel={handleButtonClick}
                                 >
-                                    <h1 className='text-3xl font-semibold text-gray-600 text-center'>Informations de base</h1>
+                                    <h1 className='text-3xl font-semibold text-gray-600 text-center roboto-thin'>Informations de base</h1>
                                     
-                                    <ol class="flex items-center w-full p-3 justify-between text-xl font-medium text-center my-10 text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm sm:text-base  sm:p-4 sm:space-x-4 rtl:space-x-reverse">
+                                    <ol class=" roboto-thin flex items-center w-full p-3 justify-between text-xl font-medium text-center my-10 text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm sm:text-base  sm:p-4 sm:space-x-4 rtl:space-x-reverse">
                                         <li class="flex items-center text-xl text-[#7a1713]">
                                             <span class="flex items-center justify-center w-10 h-10 me-2 text-3xl border border-[#7a1713] rounded-full shrink-0">
                                                 1
@@ -89,9 +89,9 @@ function NavBar() {
                                     </ol>
 
                                     {display && (
-                                    <div className="">
-                                        <label className='text-lg font-semibold' htmlFor="countries_multiple">Type de postes</label>
-                                        <select id="countries_multiple" className="focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full p-2">
+                                    <div className=" roboto-thin">
+                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Type de postes</label>
+                                        <select id="countries_multiple" className="border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full p-2">
                                             <option className='' value="Particulier">Informations</option>
                                             <option className='' value="Particulier">Particulier</option>
                                             <option className='' value="Entreprise">Entreprise</option>
@@ -99,10 +99,10 @@ function NavBar() {
                                     </div> )}
 
                                     {next && (
-                                        <div className="flex justify-around items-center">
+                                        <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 roboto-thin">
                                             <div className="flex flex-col gap-4 self-start">
                                                 <div className="w-full flex flex-col gap-1">
-                                                    <label className='text-lg font-semibold' htmlFor="countries_multiple">Type de postes</label>
+                                                    <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Type de postes</label>
                                                     <select id="countries_multiple" className="focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full p-2">
                                                         <option className='' value="Particulier">Informations</option>
                                                         <option className='' value="Particulier">Particulier</option>
@@ -110,31 +110,101 @@ function NavBar() {
                                                     </select>
                                                 </div>
                                                 <div className="w-full flex flex-col gap-1">
-                                                    <label className='text-lg font-semibold' htmlFor="countries_multiple">Localisation</label>
-                                                    <input type="text" className='border focus:outline-none p-1 w-full placeholder:text-gray-500' placeholder='Localisation'/>
+                                                    <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Localisation</label>
+                                                    <textarea className="border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full p-2" cols="30" rows="6"></textarea>
                                                 </div>
                                                 <div className="w-full flex flex-col gap-1">
-                                                    <label className='text-lg font-semibold' htmlFor="countries_multiple">Longitude</label>
-                                                    <input type="text" className='border focus:outline-none p-1 w-full placeholder:text-gray-500' placeholder='Longitude'/>
+                                                    <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Longitude</label>
+                                                    <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-1 w-full placeholder:text-gray-500' placeholder='Longitude'/>
                                                 </div>
                                             </div>
                                             <div className="flex flex-col gap-4">
                                                 <div className="w-full flex flex-col gap-1">
-                                                    <label className='text-lg font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
-                                                    <input type="file" className='border focus:outline-none p-1 w-full placeholder:text-gray-500' placeholder=''/>
+                                                    <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
+                                                    <input type="file" className='border border-[#7a1713] rounded-sm focus:outline-none p-1 w-full placeholder:text-gray-500' placeholder=''/>
                                                 </div>
                                                 <div className="w-full flex flex-col gap-1">
-                                                    <label className='text-lg font-semibold' htmlFor="countries_multiple">Latitude</label>
-                                                    <input type="text" className='border focus:outline-none p-1 w-full placeholder:text-gray-500' placeholder='Latitude'/>
+                                                    <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Latitude</label>
+                                                    <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-1 w-full placeholder:text-gray-500' placeholder='Latitude'/>
                                                 </div>
                                                 <div className="w-full flex flex-col gap-1">
-                                                    <label className='text-lg font-semibold' htmlFor="countries_multiple">Description</label>
-                                                    <textarea rows={6} className='border focus:outline-none resize-none w-full placeholder:text-gray-500 p-2'
+                                                    <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Description</label>
+                                                    <textarea rows={6} className='border border-[#7a1713] rounded-sm focus:outline-none resize-none w-full placeholder:text-gray-500 p-2'
                                                        placeholder='Une belle demeure en bordure de plage'>
                                                     </textarea>
                                                 </div>
                                             </div>
                                         </div>
+
+                                        // <div className="grid grid-cols-2 gap-10">
+                                        //     <div className="flex flex-col gap-4">
+                                        //         <div className="">
+                                        //             <label htmlFor="" className='text-lg roboto-thin font-semibold'>Informations additionnelles sur le bien</label>
+                                        //             <select id="countries_multiple" className="roboto-thin border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full py-6 px-2">
+                                        //                 <option className='' value="Particulier">Select</option>
+                                        //                 <option className='' value="Particulier">Particulier</option>
+                                        //                 <option className='' value="Entreprise">Entreprise</option>
+                                        //             </select>
+                                        //         </div>
+                                        //         <div className="">
+                                        //             <label htmlFor="" className='text-lg roboto-thin font-semibold'>Informations additionnelles sur le quartier</label>
+                                        //             <select id="countries_multiple" className="roboto-thin border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full py-6 px-2">
+                                        //                 <option className='' value="Particulier">Select</option>
+                                        //                 <option className='' value="Particulier">Particulier</option>
+                                        //                 <option className='' value="Entreprise">Entreprise</option>
+                                        //             </select>
+                                        //         </div>
+                                        //     </div>
+                                        //     <div className="flex flex-col gap-4">
+                                        //         <div className="">
+                                        //             <label htmlFor="" className='text-lg roboto-thin font-semibold'>Autre informations sur le bien</label>
+                                        //             <textarea className="border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full p-2" cols="30" rows="6"></textarea>
+                                        //         </div>
+                                        //         <div className="">
+                                        //             <label htmlFor="" className='text-lg roboto-thin font-semibold'>Autre informations sur le quartier</label>
+                                        //             <textarea className="border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full p-2" cols="30" rows="6"></textarea>
+                                        //         </div>
+                                        //     </div>
+                                        // </div>
+
+                                        // <div className="grid grid-cols-2 gap-10">
+                                        //     <div className="flex flex-col gap-4">
+                                        //         <div className="w-full flex flex-col gap-1">
+                                        //             <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
+                                        //             <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-2 w-full placeholder:text-gray-500' placeholder=''/>
+                                        //         </div>
+                                        //         <div className="w-full flex flex-col gap-1">
+                                        //             <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
+                                        //             <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-2 w-full placeholder:text-gray-500' placeholder=''/>
+                                        //         </div>
+                                        //         <div className="w-full flex flex-col gap-1">
+                                        //             <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
+                                        //             <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-2 w-full placeholder:text-gray-500' placeholder=''/>
+                                        //         </div>
+                                        //         <div className="w-full flex flex-col gap-1">
+                                        //             <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
+                                        //             <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-2 w-full placeholder:text-gray-500' placeholder=''/>
+                                        //         </div>
+                                        //     </div>
+                                        //     <div className="flex flex-col gap-4">
+                                        //         <div className="w-full flex flex-col gap-1">
+                                        //             <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
+                                        //             <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-2 w-full placeholder:text-gray-500' placeholder=''/>
+                                        //         </div>
+                                        //         <div className="w-full flex flex-col gap-1">
+                                        //             <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
+                                        //             <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-2 w-full placeholder:text-gray-500' placeholder=''/>
+                                        //         </div>
+                                        //         <div className="">
+                                        //            <label htmlFor="" className='text-lg roboto-thin font-semibold'>Informations additionnelles sur le quartier</label>
+                                        //            <select id="countries_multiple" className="roboto-thin border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full py-6 px-2">
+                                        //                <option className='' value="Particulier">Select</option>
+                                        //                <option className='' value="Particulier">Particulier</option>
+                                        //                <option className='' value="Entreprise">Entreprise</option>
+                                        //            </select>
+                                        //        </div>
+                                        //     </div>
+                                        // </div>
                                     )}
                                 </Modal>,
                                 document.body

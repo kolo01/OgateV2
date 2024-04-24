@@ -10,12 +10,12 @@ export const Modal = ({ onSubmit, onCancel, closeModal, children }) => {
                 <div className="modal-header flex justify-end" onClick={() => closeModal("Modal was closed")}>
                     <p className="close cursor-pointer text-3xl bg-red-200 px-4 rounded-md">&times;</p>
                 </div>
-                <div className="modal-content">{children}</div>
+                <div className="modal-content w-full">{children}</div>
                 <div className="modal-footer w-full flex justify-end gap-4">
-                    <button type="submit" className="btn btn-submit bg-green-600 py-3 px-8 rounded-md text-white" onClick={() => onSubmit("Submit button was clicked")}>
+                    <button type="submit" className="btn btn-submit bg-green-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => onSubmit("Submit button was clicked")}>
                         Suivant
                     </button>
-                    <button type="submit" className="btn btn-cancel bg-red-600 py-3 px-8 rounded-md text-white" onClick={() => onCancel("Cancel button was clicked")}>
+                    <button type="submit" className="btn btn-cancel bg-red-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => onCancel("Cancel button was clicked")}>
                         Fermer
                     </button>
                 </div>
