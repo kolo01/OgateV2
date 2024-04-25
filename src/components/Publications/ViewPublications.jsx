@@ -11,15 +11,15 @@ function ViewPublications() {
                     <div className="flex flex-col p-6 gap-4">
                         <div className='flex flex-col justify-between'>
                             <h3 className='text-lg'>Lorem, ipsum dolor.</h3>
-                            <Link className='py-2 px-8 font-bold text-center text-blue-400 bg-slate-100'>Voir publication</Link>
+                            <Link to={"/details-publication"} className='py-2 px-8 font-bold text-center text-blue-400 bg-slate-100'>Voir publication</Link>
                         </div>
                         <div className='flex flex-col justify-between'>
                             <h3 className='text-lg'>Lorem, ipsum dolor.</h3>
-                            <Link className='py-2 px-8 font-bold text-center text-blue-400 bg-slate-100'>Voir publication</Link>
+                            <Link to={"/details-publication"} className='py-2 px-8 font-bold text-center text-blue-400 bg-slate-100'>Voir publication</Link>
                         </div>
                         <div className='flex flex-col justify-between'>
                             <h3 className='text-lg'>Lorem, ipsum dolor.</h3>
-                            <Link className='py-2 px-8 font-bold text-center text-blue-400 bg-slate-100'>Voir publication</Link>
+                            <Link to={"/details-publication"} className='py-2 px-8 font-bold text-center text-blue-400 bg-slate-100'>Voir publication</Link>
                         </div>
                     </div>
                 </div>

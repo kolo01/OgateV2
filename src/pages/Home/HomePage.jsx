@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import home from '../../images/home.jpg'
 import GlobalStatistics from '../../components/GlobalStatistics'
-import ViewPublications from '../../components/ViewPublications'
+import ViewPublications from '../../components/Publications/ViewPublications'
 
 function HomePage() {
     return (

@@ -5,6 +5,7 @@ import SignUp from './pages/SignUp/SignUp';
 import SignIn from './pages/SignIn/SignIn';
 import HomePage from './pages/Home/HomePage';
 import Notifs from './pages/Notifs/Notifs';
+import DetailsPublication from './components/Publications/DetailsPublication';
 
 export default function App() {
     return (
@@ -16,6 +17,7 @@ export default function App() {
                 <Route path='/sign-up' element={<SignUp/>}/>
                 <Route path='/sign-in' element={<SignIn/>}/>
                 <Route path='/notifs' element={<Notifs/>}/>
+                <Route path='/details-publication' element={<DetailsPublication/>}/>
             </Routes>
         </>
     )

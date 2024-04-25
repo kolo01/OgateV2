@@ -10,65 +10,45 @@ import { Modal } from "../Modal/Modal";
 function NavBar() {
 
     const [nav, setNav] = useState(true)
-    const [next, setNext] = useState(false)
+    const [nextStep2, setNextStep2] = useState(false)
     const [nextStep3, setNextStep3] = useState(false)
     const [nextStep4, setNextStep4] = useState(false)
 
-    const [display, setDisplay] = useState(true)
+    const [nextStep1, setNextStep1] = useState(true)
+
 
     const [modalOpen, setModalOpen] = useState(false);
     const [message, setMessage] = useState("");
-
-    const [colStep2, setColStep2] = useState(false);
-    const [colStep3, setColStep3] = useState(false);
-    const [colStep4, setColStep4] = useState(false);
-
-
     
-    const handleButtonClick = (value) => {
+    const handleNextStep1ButtonClick = (value) => {
         console.log("value : ", value);
         setModalOpen(false);
         setMessage(value);
     };
 
-    const handleNextButtonClick = () => {
-        setDisplay(false)
-        setNext(true)
-        setColStep2(true)
+    const handleButtonClick = (value) => {
+        console.log("value : ", value);
+        // setModalOpen(false);
+        // setMessage(value);
+    };
+
+    const handleNextStep2ButtonClick = () => {
+        setNextStep1(false)
+        setNextStep2(true)
+
     }
 
     const handleNextStep3ButtonClick = () => {
-        setDisplay(false)
-        setNext(false)
+        setNextStep1(false)
+        setNextStep2(false)
         setNextStep3(true)
-        setColStep3(true)
     }
 
     const handleNextStep4ButtonClick = () => {
-        setDisplay(false)
-        setNext(false)
+        setNextStep1(false)
+        setNextStep2(false)
         setNextStep3(false)
         setNextStep4(true)
-        setColStep4(true)
-    }
-
-    const handleReturnStep2ButtonClick = () => {
-        setNext(false)
-        setDisplay(true)
-        setColStep2(false)
-    }
-
-    const handleReturnStep3ButtonClick = () => {
-        setDisplay(false)
-        setNextStep3(false)
-        setNext(true)
-        setColStep3(false)
-    }
-
-    const handleReturnStep4ButtonClick = () => {
-        setNextStep4(false)
-        setNextStep3(true)
-        setColStep4(false)
     }
 
     return (
@@ -87,7 +67,7 @@ function NavBar() {
                             {modalOpen &&
                                 createPortal(
                                 <Modal
-                                    closeModal={handleButtonClick}
+                                    closeModal={handleNextStep1ButtonClick}
                                     // onSubmit={handleNextButtonClick}
                                     // onCancel={handleButtonClick}
                                 >
@@ -103,8 +83,8 @@ function NavBar() {
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
                                             </svg>
                                         </li>
-                                        <li class={`flex items-center text-xl ${colStep2 ? " text-[#7a1713] ":"text-gray-500"}`}>
-                                            <span class={`flex items-center justify-center w-10 h-10 me-2 text-3xl border rounded-full shrink-0 ${colStep2 ? "border-[#7a1713] ":"border-gray-500"}`}>
+                                        <li class={`flex items-center text-xl  ${nextStep1 ? " text-[#7a1713] ":"text-gray-500"}`}>
+                                            <span class={`flex items-center justify-center w-10 h-10 me-2 text-3xl border rounded-full shrink-0 ${nextStep1 ? "border-[#7a1713] ":"border-gray-500"}`}>
                                                 2
                                             </span>
                                             Informations sur le bien {/*<span class="hidden sm:inline-flex sm:ms-2">Info</span>*/}
@@ -112,8 +92,8 @@ function NavBar() {
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
                                             </svg>
                                         </li>
-                                        <li class={`flex items-center text-xl ${colStep3 ? " text-[#7a1713] ":"text-gray-500"}`}>
-                                            <span class={`"flex items-center justify-center w-10 h-10 me-2 text-3xl border border-gray-500 rounded-full shrink-0" ${colStep3 ? "border-[#7a1713] ":"border-gray-500"}`}>
+                                        <li class="flex items-center text-xl">
+                                            <span class={`"flex items-center justify-center w-10 h-10 me-2 text-3xl border border-gray-500 rounded-full shrink-0"`}>
                                                 3
                                             </span>
                                             Informations additionnelles
@@ -121,15 +101,15 @@ function NavBar() {
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
                                             </svg>
                                         </li>
-                                        <li class={`flex items-center text-xl ${colStep4 ? " text-[#7a1713] ":"text-gray-500"}`}>
-                                            <span class={`"flex items-center justify-center w-10 h-10 me-2 text-3xl border border-gray-500 rounded-full shrink-0" ${colStep4 ? "border-[#7a1713] ":"border-gray-500"}`}>
+                                        <li class="flex items-center text-xl">
+                                            <span class={`"flex items-center justify-center w-10 h-10 me-2 text-3xl border border-gray-500 rounded-full shrink-0"`}>
                                                 4
                                             </span>
                                             Généralités et Documents
                                         </li>
                                     </ol>
 
-                                    {display && (
+                                    {nextStep1 && (
                                         <div className="flex flex-col gap-6 roboto-thin">
                                             <div className="">
                                                 <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Type de postes</label>
@@ -140,7 +120,7 @@ function NavBar() {
                                                 </select>
                                             </div>
                                             <div className="modal-footer w-full flex justify-end gap-4">
-                                                <button type="submit" className="btn btn-submit bg-green-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => handleNextButtonClick()}>
+                                                <button type="submit" className="btn btn-submit bg-green-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => handleNextStep1ButtonClick()}>
                                                     Suivant
                                                 </button>
                                                 <button type="submit" className="btn btn-cancel bg-red-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => handleButtonClick()}>
@@ -150,7 +130,7 @@ function NavBar() {
                                         </div>
                                     )}
 
-                                    {next && (
+                                    {nextStep2 && (
                                         <div className="flex flex-col gap-6">
                                             <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 roboto-thin">
                                                 <div className="flex flex-col gap-4 self-start">
@@ -164,25 +144,25 @@ function NavBar() {
                                                     </div>
                                                     <div className="w-full flex flex-col gap-1">
                                                         <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Localisation</label>
-                                                        <input type="text" className='border border-[#7a1713] rounded-md focus:outline-none p-1 w-full placeholder:text-gray-400' placeholder='Longitude'/>
+                                                        <textarea className="border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full p-2" cols="30" rows="6"></textarea>
                                                     </div>
                                                     <div className="w-full flex flex-col gap-1">
                                                         <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Longitude</label>
-                                                        <input type="text" className='border border-[#7a1713] rounded-md focus:outline-none p-1 w-full placeholder:text-gray-400' placeholder='Longitude'/>
-                                                    </div>
-                                                    <div className="w-full flex flex-col gap-1">
-                                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Latitude</label>
-                                                        <input type="text" className='border border-[#7a1713] rounded-md focus:outline-none p-1 w-full placeholder:text-gray-400' placeholder='Latitude'/>
+                                                        <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-1 w-full placeholder:text-gray-500' placeholder='Longitude'/>
                                                     </div>
                                                 </div>
                                                 <div className="flex flex-col gap-4">
                                                     <div className="w-full flex flex-col gap-1">
                                                         <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
-                                                        <input type="file" className='border border-[#7a1713] rounded-md focus:outline-none p-1 w-full placeholder:text-gray-400' placeholder=''/>
+                                                        <input type="file" className='border border-[#7a1713] rounded-sm focus:outline-none p-1 w-full placeholder:text-gray-500' placeholder=''/>
                                                     </div>
-                                                    <div className="w-full flex flex-col gap-1 mt-2">
+                                                    <div className="w-full flex flex-col gap-1">
+                                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Latitude</label>
+                                                        <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-1 w-full placeholder:text-gray-500' placeholder='Latitude'/>
+                                                    </div>
+                                                    <div className="w-full flex flex-col gap-1">
                                                         <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Description</label>
-                                                        <textarea rows={7} className='border border-[#7a1713] rounded-md focus:outline-none resize-none w-full placeholder:text-gray-400 p-2'
+                                                        <textarea rows={6} className='border border-[#7a1713] rounded-sm focus:outline-none resize-none w-full placeholder:text-gray-500 p-2'
                                                         placeholder='Une belle demeure en bordure de plage'>
                                                         </textarea>
                                                     </div>
@@ -192,7 +172,7 @@ function NavBar() {
                                                 <button type="submit" className="btn btn-submit bg-green-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => handleNextStep3ButtonClick()}>
                                                     Suivant
                                                 </button>
-                                                <button type="submit" className="btn btn-cancel bg-red-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => handleReturnStep2ButtonClick()}>
+                                                <button type="submit" className="btn btn-cancel bg-red-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => handleButtonClick()}>
                                                     Revenir
                                                 </button>
                                             </div>
@@ -200,12 +180,12 @@ function NavBar() {
                                     )}
 
                                     {nextStep3 && (
-                                        <div className='flex flex-col gap-6'>
+                                        <div>
                                             <div className="grid grid-cols-2 gap-10">
                                                 <div className="flex flex-col gap-4">
                                                     <div className="">
                                                         <label htmlFor="" className='text-lg roboto-thin font-semibold'>Informations additionnelles sur le bien</label>
-                                                        <select id="countries_multiple" className="roboto-thin border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full py-4 px-2">
+                                                        <select id="countries_multiple" className="roboto-thin border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full py-6 px-2">
                                                             <option className='' value="Particulier">Select</option>
                                                             <option className='' value="Particulier">Particulier</option>
                                                             <option className='' value="Entreprise">Entreprise</option>
@@ -213,7 +193,7 @@ function NavBar() {
                                                     </div>
                                                     <div className="">
                                                         <label htmlFor="" className='text-lg roboto-thin font-semibold'>Informations additionnelles sur le quartier</label>
-                                                        <select id="countries_multiple" className="roboto-thin border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full py-4 px-2">
+                                                        <select id="countries_multiple" className="roboto-thin border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full py-6 px-2">
                                                             <option className='' value="Particulier">Select</option>
                                                             <option className='' value="Particulier">Particulier</option>
                                                             <option className='' value="Entreprise">Entreprise</option>
@@ -223,11 +203,11 @@ function NavBar() {
                                                 <div className="flex flex-col gap-4">
                                                     <div className="">
                                                         <label htmlFor="" className='text-lg roboto-thin font-semibold'>Autre informations sur le bien</label>
-                                                        <textarea className="border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full p-2" rows="4"></textarea>
+                                                        <textarea className="border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full p-2" cols="30" rows="6"></textarea>
                                                     </div>
                                                     <div className="">
                                                         <label htmlFor="" className='text-lg roboto-thin font-semibold'>Autre informations sur le quartier</label>
-                                                        <textarea className="border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full p-2" rows="4"></textarea>
+                                                        <textarea className="border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full p-2" cols="30" rows="6"></textarea>
                                                     </div>
                                                 </div>
                                             </div>
@@ -235,7 +215,7 @@ function NavBar() {
                                                 <button type="submit" className="btn btn-submit bg-green-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => handleNextStep4ButtonClick()}>
                                                     Suivant
                                                 </button>
-                                                <button type="submit" className="btn btn-cancel bg-red-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => handleReturnStep3ButtonClick()}>
+                                                <button type="submit" className="btn btn-cancel bg-red-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => handleButtonClick()}>
                                                     Revenir
                                                 </button>
                                             </div>
@@ -243,37 +223,37 @@ function NavBar() {
                                     )}
 
                                     {nextStep4 && (
-                                        <div className='flex flex-col gap-6'>
+                                        <div>
                                             <div className="grid grid-cols-2 gap-10">
                                                 <div className="flex flex-col gap-4">
                                                     <div className="w-full flex flex-col gap-1">
-                                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">N. de pièce</label>
-                                                        <input type="text" className='border border-[#7a1713] rounded-md focus:outline-none p-2 w-full placeholder:text-gray-400' placeholder='120'/>
+                                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
+                                                        <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-2 w-full placeholder:text-gray-500' placeholder=''/>
                                                     </div>
                                                     <div className="w-full flex flex-col gap-1">
-                                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">N. de salle de bain</label>
-                                                        <input type="text" className='border border-[#7a1713] rounded-md focus:outline-none p-2 w-full placeholder:text-gray-400' placeholder='3'/>
+                                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
+                                                        <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-2 w-full placeholder:text-gray-500' placeholder=''/>
                                                     </div>
                                                     <div className="w-full flex flex-col gap-1">
-                                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Prix</label>
-                                                        <input type="text" className='border border-[#7a1713] rounded-md focus:outline-none p-2 w-full placeholder:text-gray-400' placeholder='200 000'/>
+                                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
+                                                        <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-2 w-full placeholder:text-gray-500' placeholder=''/>
                                                     </div>
                                                     <div className="w-full flex flex-col gap-1">
-                                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Apport initial</label>
-                                                        <input type="text" className='border border-[#7a1713] rounded-md focus:outline-none p-2 w-full placeholder:text-gray-400' placeholder='200 000'/>
+                                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
+                                                        <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-2 w-full placeholder:text-gray-500' placeholder=''/>
                                                     </div>
                                                 </div>
                                                 <div className="flex flex-col gap-4">
                                                     <div className="w-full flex flex-col gap-1">
-                                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">N. de chambre</label>
-                                                        <input type="text" className='border border-[#7a1713] rounded-md focus:outline-none p-2 w-full placeholder:text-gray-400' placeholder='5'/>
+                                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
+                                                        <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-2 w-full placeholder:text-gray-500' placeholder=''/>
                                                     </div>
                                                     <div className="w-full flex flex-col gap-1">
-                                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">N. de salon</label>
-                                                        <input type="text" className='border border-[#7a1713] rounded-md focus:outline-none p-2 w-full placeholder:text-gray-400' placeholder='2'/>
+                                                        <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Fichier(s)</label>
+                                                        <input type="text" className='border border-[#7a1713] rounded-sm focus:outline-none p-2 w-full placeholder:text-gray-500' placeholder=''/>
                                                     </div>
                                                     <div className="">
-                                                    <label htmlFor="" className='text-lg roboto-thin font-semibold'>Périodicitée de paiements</label>
+                                                    <label htmlFor="" className='text-lg roboto-thin font-semibold'>Informations additionnelles sur le quartier</label>
                                                     <select id="countries_multiple" className="roboto-thin border border-[#7a1713] focus:outline-none focus:border-[#7a1317] bg-gray-50 text-gray-900 text-lg rounded-lg focus:ring-white block w-full py-6 px-2">
                                                         <option className='' value="Particulier">Select</option>
                                                         <option className='' value="Particulier">Particulier</option>
@@ -283,10 +263,10 @@ function NavBar() {
                                                 </div>
                                             </div>
                                             <div className="modal-footer w-full flex justify-end gap-4">
-                                                <button type="submit" className="btn btn-submit bg-green-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => handleButtonClick()}>
-                                                    Terminer
+                                                <button type="submit" className="btn btn-submit bg-green-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => handleNextStep4ButtonClick()}>
+                                                    Suivant
                                                 </button>
-                                                <button type="submit" className="btn btn-cancel bg-red-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => handleReturnStep4ButtonClick()}>
+                                                <button type="submit" className="btn btn-cancel bg-red-600 py-3 px-8 rounded-md text-white roboto-thin font-bold" onClick={() => handleButtonClick()}>
                                                     Revenir
                                                 </button>
                                             </div>
