@@ -91,10 +91,10 @@ function NavBar() {
                                     // onSubmit={handleNextButtonClick}
                                     // onCancel={handleButtonClick}
                                 >
-                                    <h1 className='text-3xl font-semibold text-gray-600 text-center roboto-thin'>Informations de base</h1>
+                                    <h1 className='-mt-10 text-3xl font-semibold text-gray-600 text-center roboto-thin'>Informations de base</h1>
                                     
                                     <ol class=" roboto-thin flex items-center w-full p-3 justify-between text-xl font-medium text-center my-10 text-gray-500 bg-white border border-gray-200 rounded-lg shadow-sm sm:text-base  sm:p-4 sm:space-x-4 rtl:space-x-reverse">
-                                        <li class="flex items-center text-xl text-[#7a1713]">
+                                        <li class="flex items-center text-[#7a1713]">
                                             <span class="flex items-center justify-center w-10 h-10 me-2 text-3xl border border-[#7a1713] rounded-full shrink-0">
                                                 1
                                             </span>
@@ -103,7 +103,7 @@ function NavBar() {
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
                                             </svg>
                                         </li>
-                                        <li class={`flex items-center text-xl ${colStep2 ? " text-[#7a1713] ":"text-gray-500"}`}>
+                                        <li class={`flex items-center ${colStep2 ? " text-[#7a1713] ":"text-gray-500"}`}>
                                             <span class={`flex items-center justify-center w-10 h-10 me-2 text-3xl border rounded-full shrink-0 ${colStep2 ? "border-[#7a1713] ":"border-gray-500"}`}>
                                                 2
                                             </span>
@@ -112,7 +112,7 @@ function NavBar() {
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
                                             </svg>
                                         </li>
-                                        <li class={`flex items-center text-xl ${colStep3 ? " text-[#7a1713] ":"text-gray-500"}`}>
+                                        <li class={`flex items-center ${colStep3 ? " text-[#7a1713] ":"text-gray-500"}`}>
                                             <span class={`"flex items-center justify-center w-10 h-10 me-2 text-3xl border border-gray-500 rounded-full shrink-0" ${colStep3 ? "border-[#7a1713] ":"border-gray-500"}`}>
                                                 3
                                             </span>
@@ -121,7 +121,7 @@ function NavBar() {
                                                 <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
                                             </svg>
                                         </li>
-                                        <li class={`flex items-center text-xl ${colStep4 ? " text-[#7a1713] ":"text-gray-500"}`}>
+                                        <li class={`flex items-center ${colStep4 ? " text-[#7a1713] ":"text-gray-500"}`}>
                                             <span class={`"flex items-center justify-center w-10 h-10 me-2 text-3xl border border-gray-500 rounded-full shrink-0" ${colStep4 ? "border-[#7a1713] ":"border-gray-500"}`}>
                                                 4
                                             </span>
@@ -164,7 +164,7 @@ function NavBar() {
                                                     </div>
                                                     <div className="w-full flex flex-col gap-1">
                                                         <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Localisation</label>
-                                                        <input type="text" className='border border-[#7a1713] rounded-md focus:outline-none p-1 w-full placeholder:text-gray-400' placeholder='Longitude'/>
+                                                        <input type="text" className='border border-[#7a1713] rounded-md focus:outline-none p-1 w-full placeholder:text-gray-400' placeholder='Localisation'/>
                                                     </div>
                                                     <div className="w-full flex flex-col gap-1">
                                                         <label className='text-lg roboto-thin font-semibold' htmlFor="countries_multiple">Longitude</label>
